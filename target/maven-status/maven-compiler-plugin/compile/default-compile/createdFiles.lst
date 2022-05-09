@@ -1,0 +1,6 @@
+priv\liuxq\employeemgt\EmployeeManagementApplication.class
+priv\liuxq\employeemgt\bean\ResponseResult.class
+priv\liuxq\employeemgt\controller\EmployeeManagementController.class
+priv\liuxq\employeemgt\bean\EmployeeInfo.class
+priv\liuxq\employeemgt\mapper\EmployeeInfoMapper.class
+priv\liuxq\employeemgt\config\CorsConfig.class

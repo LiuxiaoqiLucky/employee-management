@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.liuxq.employeemgt.mapper.EmployeeInfoMapper">
+
+    <select id="getEmployeeInfoById" resultType="priv.liuxq.employeemgt.bean.EmployeeInfo">
+        SELECT * FROM employeeinfo WHERE id=#{id}
+    </select>
+
+    <select id="getAllEmployeeInfo" resultType="priv.liuxq.employeemgt.bean.EmployeeInfo">
+        SELECT * FROM employeeinfo
+    </select>
+
+    <delete id="deleteEmployeeInfoById" parameterType="Integer">
+      delete from employeeinfo where id = #{id}
+    </delete>
+
+    <insert id="insertEmployeeInfo" parameterType="priv.liuxq.employeemgt.bean.EmployeeInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO employeeinfo(firstName,lastName,departmentName,emailAddress,familyAddress,regDate)
+        VALUES (#{firstName},#{lastName},#{departmentName},#{emailAddress},#{familyAddress}, #{regDate})
+    </insert>
+
+    <update id="updateEmployeeInfo" parameterType="priv.liuxq.employeemgt.bean.EmployeeInfo">
+        update employeeinfo
+        <set>
+            <if test="firstName != null and firstName != ''">
+                firstName = #{firstName},
+            </if>
+            <if test="lastName != null and lastName != ''">
+                lastName = #{lastName},
+            </if>
+            <if test="departmentName != null and departmentName != ''">
+                departmentName = #{departmentName},
+            </if>
+            <if test="emailAddress != null and emailAddress != ''">
+                emailAddress = #{emailAddress},
+            </if>
+            <if test="familyAddress != null and familyAddress != ''">
+                familyAddress = #{familyAddress},
+            </if>
+            updateDate = #{updateDate}
+        </set>
+        where id = #{id};
+    </update>
+
+</mapper>
